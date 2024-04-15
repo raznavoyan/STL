@@ -1,4 +1,4 @@
-# Install script for directory: /home/razmik/cpp/vector
+# Install script for directory: /home/razmik/git/telekinesis/vector
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/razmik/cpp/vector/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/razmik/git/telekinesis/vector/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

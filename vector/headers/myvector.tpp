@@ -8,7 +8,7 @@
 
 template<typename T, typename Allocator>
 MyVector<T, Allocator>::MyVector()
-    :m_data(nullptr),m_size(0),m_capasity(0)
+    :m_data(nullptr),m_size(0),m_capacity(0)
 {}
 
 template<typename T, typename Allocator>
@@ -161,7 +161,7 @@ typename MyVector<T, Allocator>::reference MyVector<T, Allocator>::front() {
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::const_reference MyVector<T, Allocator>::front() const {
     if(this->empty()){
-        throw std::exception("MyVector::front: vector is empty");
+        throw std::out_of_range("MyVector::front: vector is empty");
     }
     return m_data[0];
 }
@@ -169,7 +169,7 @@ typename MyVector<T, Allocator>::const_reference MyVector<T, Allocator>::front()
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::reference MyVector<T, Allocator>::back() {
     if(this->empty()){
-        throw std::exception("MyVector::back: vector is empty");
+        throw std::out_of_range("MyVector::back: vector is empty");
     }
     return m_data[m_size - 1];    
 }
@@ -177,7 +177,7 @@ typename MyVector<T, Allocator>::reference MyVector<T, Allocator>::back() {
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::const_reference MyVector<T, Allocator>::back() const {
     if(this->empty()){
-        throw std::exception("MyVector::back: vector is empty");
+        throw std::out_of_range("MyVector::back: vector is empty");
     }
     return m_data[m_size - 1]; 
 }
@@ -185,7 +185,7 @@ typename MyVector<T, Allocator>::const_reference MyVector<T, Allocator>::back() 
 template<typename T, typename Allocator>
 T* MyVector<T, Allocator>::data() noexcept {
     if(m_data == nullptr){
-        throw std::exception("MyVector::data: vector is not alocated");
+        throw std::out_of_range("MyVector::data: vector is not alocated");
     }
     return m_data;
 }
@@ -233,7 +233,8 @@ T* MyVector<T, Allocator>::data() noexcept {
 // Capacity
 template<typename T, typename Allocator>
 bool MyVector<T, Allocator>::empty() const noexcept {
-    return !(static_cast<bool>m_size);
+
+    return 0 == m_size ? true : false;
 }
 
 template<typename T, typename Allocator>
@@ -243,7 +244,7 @@ typename MyVector<T, Allocator>::size_type MyVector<T, Allocator>::size() const 
 
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::size_type MyVector<T, Allocator>::max_size() const noexcept {
-    return m_allocator.max_size();
+    return m_allocator._M_max_size();
 }
 
 template<typename T, typename Allocator>
@@ -311,7 +312,7 @@ void MyVector<T, Allocator>::insert(iterator pos, const T& value) {
 
     // Check capacity
     if (m_size >= m_capacity) {
-        reserve((m_capacity == 0) ? 1 : m_capacity * 2;);
+        reserve((m_capacity == 0) ? 1 : m_capacity * 2);
     }
 
     // Shift elements after the insertion point to make room for the new element
@@ -357,7 +358,7 @@ void MyVector<T, Allocator>::erase(iterator pos) {
 }
 
 template<typename T, typename Allocator>
-void MyVector<T, Allocator>::erase(iterator first, iterator last) {
+void MyVector<T, Allocator>::erase(std::iterator first, std::iterator last) {
     // Calculate the index corresponding to the iterators
     size_type index_first = first - this->begin();
     size_type index_last = last - this->begin();
@@ -389,7 +390,7 @@ void MyVector<T, Allocator>::push_back(const T& value) {
     // Check if resizing is necessary
     if (m_size >= m_capacity) {
         // Allocate new memory block with increased capacity
-        reserve((m_capacity == 0) ? 1 : m_capacity * 2;);
+        reserve((m_capacity == 0) ? 1 : m_capacity * 2);
     }
 
     // Insert the new element at the end of the vector

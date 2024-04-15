@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/razmik/cpp/vector/cources/main.cpp" "CMakeFiles/MyVector.dir/cources/main.cpp.o" "gcc" "CMakeFiles/MyVector.dir/cources/main.cpp.o.d"
+  "/home/razmik/git/telekinesis/vector/cources/main.cpp" "CMakeFiles/MyVector.dir/cources/main.cpp.o" "gcc" "CMakeFiles/MyVector.dir/cources/main.cpp.o.d"
   )
 
 # Targets to which this target links.
