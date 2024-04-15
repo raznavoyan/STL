@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.tpp": "c",
+        "*.tcc": "c",
+        "vector": "c"
+    }
+}

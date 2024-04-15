@@ -311,7 +311,7 @@ void MyVector<T, Allocator>::insert(iterator pos, const T& value) {
 
     // Check capacity
     if (m_size >= m_capacity) {
-        reserve(2 * m_size);
+        reserve((m_capacity == 0) ? 1 : m_capacity * 2;);
     }
 
     // Shift elements after the insertion point to make room for the new element
@@ -384,21 +384,70 @@ void MyVector<T, Allocator>::erase(iterator first, iterator last) {
     m_size -= num_to_erase;
 }
 
-// template<typename T, typename Allocator>
-// void MyVector<T, Allocator>::push_back(const T& value) {}
+template<typename T, typename Allocator>
+void MyVector<T, Allocator>::push_back(const T& value) {
+    // Check if resizing is necessary
+    if (m_size >= m_capacity) {
+        // Allocate new memory block with increased capacity
+        reserve((m_capacity == 0) ? 1 : m_capacity * 2;);
+    }
 
-// template<typename T, typename Allocator>
-// void MyVector<T, Allocator>::push_back(T&& value) {}
+    // Insert the new element at the end of the vector
+    m_allocator.construct(m_data + m_size, value);
+
+    // Increment size
+    ++m_size;
+}
+
+template<typename T, typename Allocator>
+void MyVector<T, Allocator>::push_back(T&& value) {
+    // Check if resizing is necessary
+    if (m_size == m_capacity) {
+        // Allocate new memory block with increased capacity
+        size_type new_capacity = (m_capacity == 0) ? 1 : m_capacity * 2;
+        reserve(new_capacity);
+    }
+
+    // Insert the new element at the end of the vector using move semantics
+    m_allocator.construct(m_data + m_size, std::move(value));
+
+    // Increment size
+    ++m_size;
+}
 
 // template<typename T, typename Allocator>
 // template<typename... Args>
 // typename MyVector<T, Allocator>::reference MyVector<T, Allocator>::emplace_back(Args&&... args) {}
 
-// template<typename T, typename Allocator>
-// void MyVector<T, Allocator>::pop_back() {}
+template<typename T, typename Allocator>
+void MyVector<T, Allocator>::pop_back() {
+    if (this->empty()) {
+        throw std::out_of_range("Vector is empty!");
+    }
+    this->erase(this->end() - 1); // Pass iterator pointing to the last element
+    --m_size;
+}
 
-// template<typename T, typename Allocator>
-// void MyVector<T, Allocator>::resize(size_type count) {}
+template<typename T, typename Allocator>
+void MyVector<T, Allocator>::resize(size_type count) {
+    if (count > m_size) {
+        // Increase size
+        if (count > m_capacity) {
+            reserve(count);
+        }
+        // Insert default-initialized elements at the end
+        for (size_type i = m_size; i < count; ++i) {
+            m_allocator.construct(m_data + i, T());
+        }
+    } else if (count < m_size) {
+        // Decrease size and destruct excess elements at the end
+        for (size_type i = count; i < m_size; ++i) {
+            m_allocator.destroy(m_data + i);
+        }
+    }
+    // Set new size
+    m_size = count;
+}
 
 // template<typename T, typename Allocator>
 // void MyVector<T, Allocator>::resize(size_type count, const T& value) {}
@@ -406,6 +455,6 @@ void MyVector<T, Allocator>::erase(iterator first, iterator last) {
 // template<typename T, typename Allocator>
 // void MyVector<T, Allocator>::swap(MyVector& other) {}
 
-// // Explicit Instantiation
-// template class MyVector<int>;  // Example for explicit instantiation with int type
+// Explicit Instantiation
+template class MyVector<int>;  // Example for explicit instantiation with int type
 
