@@ -1,0 +1,3 @@
+/home/razmik/cpp/vector/build/CMakeFiles/MyVector.dir
+/home/razmik/cpp/vector/build/CMakeFiles/edit_cache.dir
+/home/razmik/cpp/vector/build/CMakeFiles/rebuild_cache.dir

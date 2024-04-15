@@ -15,7 +15,7 @@ include_directories(include) # For headers
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Header files
-file(GLOB_RECURSE HEADERS "headers/*.h")
+file(GLOB_RECURSE HEADERS "headers/*.hpp")
 
 # Executable
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES} ${HEADERS})
