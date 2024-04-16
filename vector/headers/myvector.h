@@ -17,7 +17,7 @@ public:
     using const_reference = const value_type&;
     using pointer = typename std::allocator_traits<Allocator>::pointer;
     using const_pointer = typename std::allocator_traits<Allocator>::const_pointer;
-    using iterator = typename std::vector<T>::iterator;
+    using iterator = std::vector<T>::iterator;
     using const_iterator = typename std::vector<T>::const_iterator;
     using reverse_iterator = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
@@ -120,5 +120,6 @@ public:
     }
 };
 
-#include"myvector.tpp"
+#include"myvector.hpp"
 #endif // MY_VECTOR_H
+

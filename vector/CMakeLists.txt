@@ -5,7 +5,7 @@ project(Vector)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(MyVector
-    headers/myvector.hpp
+    headers/myvector.h
     cources/main.cpp
-    headers/myvector.tpp
+    headers/myvector.hpp
 )

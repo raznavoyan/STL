@@ -358,7 +358,7 @@ void MyVector<T, Allocator>::erase(iterator pos) {
 }
 
 template<typename T, typename Allocator>
-void MyVector<T, Allocator>::erase(std::iterator first, std::iterator last) {
+void MyVector<T, Allocator>::erase(iterator first, iterator last) {
     // Calculate the index corresponding to the iterators
     size_type index_first = first - this->begin();
     size_type index_last = last - this->begin();
