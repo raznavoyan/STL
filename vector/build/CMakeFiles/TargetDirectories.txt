@@ -1,3 +1,0 @@
-/home/razmik/git/telekinesis/vector/build/CMakeFiles/MyVector.dir
-/home/razmik/git/telekinesis/vector/build/CMakeFiles/edit_cache.dir
-/home/razmik/git/telekinesis/vector/build/CMakeFiles/rebuild_cache.dir

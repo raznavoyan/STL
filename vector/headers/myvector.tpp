@@ -2,7 +2,7 @@
 #include <algorithm> // For std::copy, std::move, std::swap
 #include <initializer_list>
 #include <iostream>
-#include "myvector.hpp"
+#include "myvector.h"
 
 // Constructors
 
