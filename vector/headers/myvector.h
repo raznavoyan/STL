@@ -1,6 +1,7 @@
 #ifndef MY_VECTOR_H
 #define MY_VECTOR_H
 
+#include <memory>
 #include <cstddef> // For std::size_t
 #include <vector>
 
@@ -17,7 +18,7 @@ public:
     using const_reference = const value_type&;
     using pointer = typename std::allocator_traits<Allocator>::pointer;
     using const_pointer = typename std::allocator_traits<Allocator>::const_pointer;
-    using iterator = std::vector<T>::iterator;
+    using iterator = typename std::vector<T>::iterator;
     using const_iterator = typename std::vector<T>::const_iterator;
     using reverse_iterator = std::reverse_iterator<iterator>;
     using const_reverse_iterator = std::reverse_iterator<const_iterator>;
@@ -62,17 +63,17 @@ public:
 
     // Iterators
     iterator begin() noexcept;
-    const_iterator begin() const noexcept;
-    iterator end() noexcept;
-    const_iterator end() const noexcept;
-    reverse_iterator rbegin() noexcept;
-    const_reverse_iterator rbegin() const noexcept;
-    reverse_iterator rend() noexcept;
-    const_reverse_iterator rend() const noexcept;
-    const_iterator cbegin() const noexcept;
-    const_iterator cend() const noexcept;
-    const_reverse_iterator crbegin() const noexcept;
-    const_reverse_iterator crend() const noexcept;
+    // const_iterator begin() const noexcept;
+    // iterator end() noexcept;
+    // const_iterator end() const noexcept;
+    // reverse_iterator rbegin() noexcept;
+    // const_reverse_iterator rbegin() const noexcept;
+    // reverse_iterator rend() noexcept;
+    // const_reverse_iterator rend() const noexcept;
+    // const_iterator cbegin() const noexcept;
+    // const_iterator cend() const noexcept;
+    // const_reverse_iterator crbegin() const noexcept;
+    // const_reverse_iterator crend() const noexcept;
 
     // Capacity
     bool empty() const noexcept;
@@ -85,19 +86,19 @@ public:
     // Modifiers
     void clear() noexcept;
     void insert(iterator pos, const T& value);
-    iterator insert(iterator pos, size_type count, const T& value);
+    // iterator insert(iterator pos, size_type count, const T& value);
     template <typename InputIt>
-    void insert(iterator pos, InputIt first, InputIt last);
+    // void insert(iterator pos, InputIt first, InputIt last);
     void erase(iterator pos);
     void erase(iterator first, iterator last);
     void push_back(const T& value);
     void push_back(T&& value);
     template <typename... Args>
-    reference emplace_back(Args&&... args);
+    // reference emplace_back(Args&&... args);
     void pop_back();
     void resize(size_type count);
-    void resize(size_type count, const T& value);
-    void swap(MyVector& other);
+    // void resize(size_type count, const T& value);
+    // void swap(MyVector& other);
 
     // Non-member functions
     friend bool operator==(const MyVector& lhs, const MyVector& rhs) {

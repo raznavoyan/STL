@@ -2,6 +2,7 @@
 #include <algorithm> // For std::copy, std::move, std::swap
 #include <initializer_list>
 #include <iostream>
+#include <memory>
 #include "myvector.h"
 
 // Constructors
@@ -16,6 +17,7 @@ MyVector<T, Allocator>::MyVector(size_type count)
 : m_size(count), m_capacity(count), m_data(nullptr) {
     m_data = m_allocator.allocate(m_capacity);
     for (size_type i = 0; i < m_size; ++i) {
+        
         m_allocator.construct(m_data + i, T());
     }
 }
@@ -153,7 +155,7 @@ typename MyVector<T, Allocator>::const_reference MyVector<T, Allocator>::operato
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::reference MyVector<T, Allocator>::front() {
     if(this->empty()){
-        throw std::exception("MyVector::front: vector is empty");
+        throw std::out_of_range("MyVector::front: vector is empty");
     }
     return m_data[0];
 }
@@ -244,7 +246,7 @@ typename MyVector<T, Allocator>::size_type MyVector<T, Allocator>::size() const 
 
 template<typename T, typename Allocator>
 typename MyVector<T, Allocator>::size_type MyVector<T, Allocator>::max_size() const noexcept {
-    return m_allocator._M_max_size();
+    return m_allocator.max_size();
 }
 
 template<typename T, typename Allocator>
@@ -266,7 +268,7 @@ void MyVector<T, Allocator>::reserve(size_type new_cap) {
 }
 
 template<typename T, typename Allocator>
-MyVector<T, Allocator>::size_type MyVector<T, Allocator>::capacity() const noexcept {
+typename MyVector<T, Allocator>::size_type MyVector<T, Allocator>::capacity() const noexcept {
     return m_capacity;
 }
 
@@ -303,7 +305,7 @@ void MyVector<T, Allocator>::clear() noexcept {
 template<typename T, typename Allocator>
 void MyVector<T, Allocator>::insert(iterator pos, const T& value) {
     // Calculate the index corresponding to the iterator position
-    size_type index = pos - begin();
+    size_type index = pos - this->begin();
 
     // Check if index is out of bounds
     if (index > m_size) {
