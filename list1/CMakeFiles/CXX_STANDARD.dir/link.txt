@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/CXX_STANDARD.dir/src/List.cpp.o CMakeFiles/CXX_STANDARD.dir/src/main.cpp.o -o CXX_STANDARD 
