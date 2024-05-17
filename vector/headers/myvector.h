@@ -87,13 +87,13 @@ public:
     void clear() noexcept;
     void insert(iterator pos, const T& value);
     // iterator insert(iterator pos, size_type count, const T& value);
-    template <typename InputIt>
+    // template <typename InputIt>
     // void insert(iterator pos, InputIt first, InputIt last);
     void erase(iterator pos);
     void erase(iterator first, iterator last);
     void push_back(const T& value);
     void push_back(T&& value);
-    template <typename... Args>
+    //template <typename... Args>
     // reference emplace_back(Args&&... args);
     void pop_back();
     void resize(size_type count);
@@ -123,4 +123,3 @@ public:
 
 #include"myvector.hpp"
 #endif // MY_VECTOR_H
-

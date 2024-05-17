@@ -1,3 +1,0 @@
-/home/razmik/git/telekinesis/list/V1/CMakeFiles/CXX_STANDARD.dir
-/home/razmik/git/telekinesis/list/V1/CMakeFiles/edit_cache.dir
-/home/razmik/git/telekinesis/list/V1/CMakeFiles/rebuild_cache.dir

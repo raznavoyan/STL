@@ -427,7 +427,6 @@ void MyVector<T, Allocator>::pop_back() {
     if (this->empty()) {
         throw std::out_of_range("Vector is empty!");
     }
-    this->erase(this->end() - 1); // Pass iterator pointing to the last element
     --m_size;
 }
 

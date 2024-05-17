@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(include) # For headers
 
 # Source files
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE SOURCES "sorces/*.cpp")
 
 # Header files
 file(GLOB_RECURSE HEADERS "headers/*.h")
