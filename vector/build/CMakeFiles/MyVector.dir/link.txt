@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/MyVector.dir/cources/main.cpp.o -o MyVector 
