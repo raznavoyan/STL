@@ -1,0 +1,3 @@
+/home/razmik/git/telekinesis/SpreadSheet/build/CMakeFiles/spreadsheet.dir
+/home/razmik/git/telekinesis/SpreadSheet/build/CMakeFiles/edit_cache.dir
+/home/razmik/git/telekinesis/SpreadSheet/build/CMakeFiles/rebuild_cache.dir
